@@ -12,9 +12,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // Endpoints
-app.get('/status', (req, res) => {
+app.post('/register', (req, res) => {
   res.send({
-    message: 'Hello World!'
+    message: `Hi ${req.body.email}, You are registered now!`
   })
 })
 
