@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
+const {sequelize} = require('./models')
+const config = require('./config/config')
 
 // App intialization
 const app = express()
@@ -12,11 +14,9 @@ app.use(bodyParser.json())
 app.use(cors())
 
 // Endpoints
-app.post('/register', (req, res) => {
-  res.send({
-    message: `Hi ${req.body.email}, You are registered now!`
-  })
-})
+require('./routes')(app)
 
-// Server listening
-app.listen(process.env.PORT || 8081)
+sequelize.sync().then(() => {
+  // Server listening
+  app.listen(config.port)
+})
