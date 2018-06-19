@@ -4,7 +4,7 @@ const AuthenticationMiddleware = require('./middlewares/AuthenticationController
 
 module.exports = (app) => {
   app.post('/register',
-      AuthenticationMiddleware.register,
-      AuthenticationController.register
+    AuthenticationMiddleware.register,
+    AuthenticationController.register
   )
 }
