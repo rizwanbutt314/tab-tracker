@@ -4,12 +4,11 @@
     <v-flex xs6 offset-xs3>
       <div class="white elevation-2">
         <v-toolbar flat dense class="cyan" dark>
-          <v-toolbar-title>Register</v-toolbar-title>
+          <v-toolbar-title>Login</v-toolbar-title>
         </v-toolbar>
         <div class="pl-4 pr-4 pt-2 pb-2">
-          <form
-            name="tab-tracker-register"
-            autocomplete="off">
+          <form name="tab-tracker-form"
+                autocomplete="off">
             <v-text-field
               label="Email"
               v-model="email"
@@ -19,11 +18,12 @@
               label="Password"
               v-model="password"
               type="password"
+              autocomplete="new-password"
             ></v-text-field>
           </form>
           <br>
           <div class="err" v-html="error"/>
-          <v-btn dark class="cyan" @click="register()">Register</v-btn>
+          <v-btn dark class="cyan" @click="login()">Login</v-btn>
         </div>
 
       </div>
@@ -42,9 +42,9 @@ export default {
     }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const response = await AuthenticationService.register({
+        const response = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
@@ -55,15 +55,8 @@ export default {
       }
     }
   },
-  // watch: {
-  //   email (value) {
-  //     console.log('Email has changed', value)
-  //   }
-  // },
   mounted () {
-    // setTimeout(() => {
-    //   this.email = 'rizwan'
-    // }, 2000)
+
   }
 }
 </script>

@@ -10,5 +10,8 @@ module.exports = {
       sotrage: process.env.STORAGE || './tabtracker.sqlite',
       operatorsAliases: false
     },
+  },
+  authentication:{
+    jwtSecret: process.env.jwtSecret || 'secret'
   }
 }

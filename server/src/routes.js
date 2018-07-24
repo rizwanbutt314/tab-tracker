@@ -7,4 +7,7 @@ module.exports = (app) => {
     AuthenticationMiddleware.register,
     AuthenticationController.register
   )
+  app.post('/login',
+    AuthenticationController.login
+  )
 }
